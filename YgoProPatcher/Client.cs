@@ -30,7 +30,7 @@ namespace YgoProPatcher
             _pool.Release(throttleValue);
             toolTip1.SetToolTip(ReinstallCheckbox, "This will download the newest version of the YGOPro2 Client and install it.\nTHIS OPTION WILL OVERWRITE YOUR SETTINGS AND CUSTOM TEXTURES!");
             toolTip1.SetToolTip(OverwriteCheckbox, "This will redownload all of the pictures in your picture folder.");
-            toolTip1.SetToolTip(gitHubDownloadCheckbox, "RECOMMENDED OPTION!\nThis will update your YGOPro2 with the newest cards, pictures and scripts.");
+            toolTip1.SetToolTip(gitHubDownloadCheckbox, "RECOMMENDED OPTION!\nThis will update your YGOPro2 with the newest cards, pictures.");
             toolTip1.SetToolTip(YgoPro2Path, "Please select your YGOPro2 directory which contains all the YGOPro2 files.");
             toolTip1.SetToolTip(YGOPRO2PathButton, "Please select your YGOPro2 directory which contains all the YGOPro2 files.");
             toolTip1.SetToolTip(YgoProLinksPath, "Please select your YGOPro Percy directory which contains all the YGOPro Percy files.");
@@ -82,7 +82,6 @@ namespace YgoProPatcher
         int throttleValue = 6;
         int downloads = 0;
         bool threadRunning = false;
-        static string token = Data.GetToken();
         private static Semaphore _pool;
         System.Timers.Timer updateCheckerTimer = new System.Timers.Timer();
         System.Timers.Timer nextUpdateTimer = new System.Timers.Timer();
@@ -296,7 +295,7 @@ namespace YgoProPatcher
                     {
                         if (Path.GetExtension(fileName) == ".png")
                         {
-                            client.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", token));
+                            //client.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", token));
                         }
                         _pool.WaitOne();
                         await Task.Run(() => { client.DownloadFile(new Uri(webFile), destFile); });
@@ -436,7 +435,7 @@ namespace YgoProPatcher
                     {
                         DataClass db = new DataClass(cdb);
                         DataTable dt = db.SelectQuery("SELECT id FROM datas");
-                        Status.Invoke(new Action(() => Status.Text = "Updating pictures and scripts using " + Path.GetFileName(cdb)));
+                        Status.Invoke(new Action(() => Status.Text = "Updating pictures using " + Path.GetFileName(cdb)));
                         progressBar.Invoke(new Action(() => progressBar.Maximum = (dt.Rows.Count)));
                         progressBar.Invoke(new Action(() => progressBar.Value = 0));
                         string dlWebsitePics = Data.GetPicWebsite();
@@ -513,7 +512,7 @@ namespace YgoProPatcher
             CDBS = await DownloadCDBSFromGithub(destinationFolder);
             await FileDownload("lflist.conf", Path.Combine(YgoPro2Path.Text, "config"), "https://raw.githubusercontent.com/Ygoproco/Live2017Links/master/", true);
             await FileDownload("strings.conf", Path.Combine(YgoPro2Path.Text, "config"), Data.GetStringsWebsite(), true);
-            await GitDownloadFacesAsync();
+            GitDownloadFacesAsync();
             progressBar.Invoke(new Action(() => { progressBar.Value = progressBar.Maximum; }));
 
             DownloadUsingCDB(CDBS, destinationFolder);
@@ -826,7 +825,33 @@ namespace YgoProPatcher
         {
             try
             {
-                System.Diagnostics.Process.Start(Data.FormLink);
+                FileInfo config = new FileInfo(Path.Combine(YgoPro2Path.Text, "config", "config.conf"));
+                if (config.Exists)
+                {
+                    using (StreamReader text = File.OpenText(config.FullName))
+                    {
+                        string line;
+                        while ((line = text.ReadLine()) != null){
+                            if (line.Contains("name->"))
+                            {
+                                line =line.Remove(0, 6);
+                                int psw = line.IndexOf("$");
+                                if (psw > 0)
+                                {
+                                    line = line.Substring(0, psw);
+                                }
+                                System.Diagnostics.Process.Start(Data.FormLink+ "?&name="+line);
+                                break;
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(Data.FormLink);
+                }
             }
             catch
             {
