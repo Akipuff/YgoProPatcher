@@ -30,13 +30,13 @@ namespace YgoProPatcher
             {
                result.AddRange(githubAuthorized.Repository.Content.GetAllContents(owner, repo,path).Result);
             }
-            
+
             return result;
         }
         static public string GetURLofRepo(string owner, string repo)
         {
             Repository repository = githubAuthorized.Repository.Get(owner, repo).Result;
-            
+
 
             return repository.CloneUrl;
         }
@@ -71,7 +71,7 @@ namespace YgoProPatcher
         static public Release GetNewestYgoProPatcherRelease()
         {
 
-          return githubUnauthorized.Repository.Release.GetLatest("szefo09", "ygopropatcher").Result;
+          return githubUnauthorized.Repository.Release.GetLatest("Akipuff", "ygopropatcher").Result;
         }
         static public List<GitHubCommit> GetHeaderCommit()
         {
@@ -84,7 +84,7 @@ namespace YgoProPatcher
             };
 
             return commits;
-            
+
         }
 
 
