@@ -1,7 +1,7 @@
 # YgoProPatcher
 YgoProPatcher that patches YGOPRO2 using Internet
 
-HOW TO USE: https://www.youtube.com/watch?v=69gBuejnMl0
+HOW TO USE: https://www.youtube.com/watch?v=ZPnDT4gormk
 
 ## **CHECK RELEASES TAB FOR THE NEWEST UPDATER FILE**
 
