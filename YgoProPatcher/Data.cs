@@ -23,7 +23,7 @@
         return "https://raw.githubusercontent.com/purerosefallen/ygopro-database/master/locales/en-US/";
         }
         public static string YgoPro2Owner =  "shadowfox87";
-        public static string version = "V2.8";
+        public static string version = "V2.8.0";
         public static string GetFacesWebsite()
         {
             return "https://raw.githubusercontent.com/szefo09/face/master/";
