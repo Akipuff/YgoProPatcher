@@ -1,15 +1,15 @@
 # YgoProPatcher
-YgoProPatcher that patches YGOPRO2 using Internet
+A patcher that updates YGOPro2 using internet.
 
-HOW TO USE: https://www.youtube.com/watch?v=ZPnDT4gormk
+How to use: https://www.youtube.com/watch?v=ZPnDT4gormk
 
 ## **CHECK RELEASES TAB FOR THE NEWEST UPDATER FILE**
 
-Simple program that I made for my friend that wanted to have an automated tool to update YGOPRO2
+**This program was discontinued by Szefo09 and is now being continued by Akipuff**
 The app uses the Internet to update.
 
-The app doesn't integrate in YGOPRO2.
-This app will get you up-to-date with newest card databases and pictures for your YGOPRO2 Client.
+The app doesn't integrate in YGOPro2.
+This app will get you up-to-date with newest card databases and pictures for your YGOPro2 client.
 You can also download the whole client with this app!
 BEFORE:
 ![Before update:](https://i.imgur.com/F3aS3Ty.jpg)
