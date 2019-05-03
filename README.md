@@ -6,6 +6,7 @@ How to use: https://www.youtube.com/watch?v=ZPnDT4gormk
 ## **CHECK RELEASES TAB FOR THE NEWEST UPDATER FILE**
 
 **This program was discontinued by Szefo09 and is now being continued by Akipuff**
+
 The app uses the Internet to update.
 
 The app doesn't integrate in YGOPro2.
