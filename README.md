@@ -7,7 +7,7 @@ How to use: https://www.youtube.com/watch?v=ZPnDT4gormk
 
 **This program was discontinued by Szefo09 and is now being continued by Akipuff**
 
-The app uses the Internet to update.
+The software uses the internet to update.
 
 The app doesn't integrate in YGOPro2.
 This app will get you up-to-date with newest card databases and pictures for your YGOPro2 client.
